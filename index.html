@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Frontend-разработчик с 2010 года. Специализация: Vue 3, TypeScript, Nuxt." />
+		<link href="./img/favicon.png" type="image/png" rel="shortcut icon" />
+
+		<title>Портфолио — Максим Поляков</title>
+		<link rel="preload" href="fonts/MullerMedium.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="fonts/MullerBold.woff2" as="font" type="font/woff2" crossorigin />
+
+		<link href="./css/normalize.css" rel="stylesheet" />
+
+		<link href="./css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="hero" role="banner">
+			<div class="container hero__inner">
+				<div class="hero__content">
+					<h1 class="hero__title">Максим Поляков</h1>
+					<p class="hero__position">Frontend-разработчик (Vue 3 • TypeScript)</p>
+					<p class="hero__description">
+						Frontend с 2010 года. Основной стек: Vue 3, Composition API, Pinia, TypeScript, Nuxt, JavaScript.<br />
+						Интересуюсь применением нейросетей в разработке. Ищу проекты, где можно расти и приносить пользу.
+					</p>
+					<div class="hero__actions">
+						<a href="#contacts" class="btn btn--primary">Связаться</a>
+						<a href="https://github.com/MaxiViP" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+							GitHub
+						</a>
+					</div>
+				</div>
+				<div class="hero__avatar">
+					<img
+						src="img/avatar.jpg"
+						alt="Портрет Максима Полякова, frontend-разработчика"
+						width="300"
+						height="300"
+						loading="eager"
+					/>
+				</div>
+			</div>
+		</header>
+
+		<main class="container main-content">
+			<div class="main-grid">
+				<!-- Информационная карточка -->
+				<section class="card main-grid__full" aria-labelledby="info-title">
+					<h2 id="info-title" class="card__title">Основная информация</h2>
+					<div class="info-grid">
+						<div class="info-item">
+							<span class="info-item__label">ФИО:</span>
+							<span class="info-item__value">Поляков Максим Викторович</span>
+						</div>
+						<div class="info-item">
+							<span class="info-item__label">Город:</span>
+							<span class="info-item__value">Москва, Россия</span>
+						</div>
+						<div class="info-item">
+							<span class="info-item__label">Email:</span>
+							<a href="mailto:batti@ya.ru" class="info-item__value">batti@ya.ru</a>
+						</div>
+						<div class="info-item">
+							<span class="info-item__label">Телефон:</span>
+							<a href="tel:+79057353580" class="info-item__value">+7 (905) 735-35-80</a>
+						</div>
+						<div class="info-item">
+							<span class="info-item__label">Telegram:</span>
+							<a
+								href="https://t.me/MaksimVictorovichP"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="info-item__value"
+							>
+								@MaksimVictorovichP
+							</a>
+						</div>
+					</div>
+				</section>
+
+				<!-- Навыки -->
+				<section class="card" aria-labelledby="skills-title">
+					<h2 id="skills-title" class="card__title">Ключевые навыки</h2>
+					<div id="skills" class="skills-list" role="list"></div>
+				</section>
+
+				<!-- Радар навыков -->
+				<section class="card" aria-labelledby="radar-title">
+					<h2 id="radar-title" class="card__title">Паспорт навыков</h2>
+					<div class="radar-container">
+						<svg viewBox="0 0 500 500" class="radar-svg" role="img" aria-labelledby="radar-desc">
+							<title id="radar-desc">Визуализация уровня владения ключевыми технологиями</title>
+							<!-- Фон (сетка) -->
+							<g class="radar-grid" fill="none" stroke="#334155" stroke-width="1">
+								<polygon points="250,50 450,250 250,450 50,250" />
+								<polygon points="250,100 400,250 250,400 100,250" />
+								<polygon points="250,150 350,250 250,350 150,250" />
+								<polygon points="250,200 300,250 250,300 200,250" />
+								<line x1="250" y1="50" x2="250" y2="450" />
+								<line x1="50" y1="250" x2="450" y2="250" />
+								<line x1="150" y1="150" x2="350" y2="350" />
+								<line x1="150" y1="350" x2="350" y2="150" />
+							</g>
+
+							<!-- Область навыков -->
+							<polygon
+								class="radar-fill"
+								points="250,120 420,250 320,420 180,420 80,250"
+								fill="rgba(59,130,246,0.35)"
+								stroke="#3b82f6"
+								stroke-width="3"
+							/>
+
+							<!-- Метки -->
+							<text x="250" y="100" text-anchor="middle" fill="#e2e8f0" font-size="16">Vue 3</text>
+							<text x="440" y="250" text-anchor="start" fill="#e2e8f0" font-size="16">TypeScript</text>
+							<text x="250" y="460" text-anchor="middle" fill="#e2e8f0" font-size="16">JavaScript</text>
+							<text x="60" y="250" text-anchor="end" fill="#e2e8f0" font-size="16">HTML/CSS</text>
+							<text x="320" y="150" text-anchor="middle" fill="#e2e8f0" font-size="16">Nuxt</text>
+						</svg>
+					</div>
+				</section>
+
+				<!-- Проекты -->
+				<section class="card main-grid__full" aria-labelledby="projects-title">
+					<h2 id="projects-title" class="card__title">Работа в проектах</h2>
+					<div id="projects" class="projects-grid" role="list"></div>
+
+					<!-- Кнопка "Показать все" (скрыта по умолчанию) -->
+					<div class="projects-more-container" id="projects-more-container" style="display: none">
+						<button id="show-all-projects" class="btn btn--secondary projects-more-btn">
+							Показать все проекты
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M6 9l6 6 6-6" />
+							</svg>
+						</button>
+					</div>
+				</section>
+				<!-- Достижения -->
+				<section class="card main-grid__full" aria-labelledby="achievements-title">
+					<div style="position: relative">
+						<h2 id="achievements-title" class="card__title">Достижения</h2>
+						<!-- Кнопка переключения вида -->
+						<button id="toggle-view" class="view-toggle-btn" aria-label="Переключить вид отображения">
+							Вертикально
+						</button>
+					</div>
+
+					<div class="achievements-carousel">
+						<!-- Кнопки карусели -->
+						<button class="carousel__btn carousel__btn--prev" aria-label="Предыдущие достижения">
+							<span aria-hidden="true">←</span>
+						</button>
+
+						<!-- Контейнер достижений -->
+						<div class="awards-wrapper horizontal" id="awards-wrapper" role="list" aria-label="Список достижений">
+							<div id="awards" class="awards"></div>
+						</div>
+
+						<button class="carousel__btn carousel__btn--next" aria-label="Следующие достижения">
+							<span aria-hidden="true">→</span>
+						</button>
+
+						<!-- Подсказка для мобильных -->
+						<div class="touch-hint" aria-hidden="true">← Проведите пальцем для прокрутки →</div>
+					</div>
+				</section>
+
+				<!-- Образование и курсы -->
+				<section class="card main-grid__full" aria-labelledby="education-title">
+					<h2 id="education-title" class="card__title">Образование и курсы</h2>
+					<div id="education" class="education-list"></div>
+				</section>
+			</div>
+		</main>
+
+		<!-- Футер -->
+		<footer id="contacts" class="footer" role="contentinfo">
+			<div class="container footer__inner">
+				<div class="footer__content">
+					<h3 class="footer__title">Давайте работать вместе!</h3>
+					<p>Открыт к интересным проектам и предложениям</p>
+					<div class="footer__contacts">
+						<p class="footer__contact">
+							<svg width="20" height="20" aria-hidden="true" style="margin-right: 8px">
+								<use href="#telegram-icon"></use>
+							</svg>
+							Telegram:
+							<a href="https://t.me/MaksimVictorovichP" target="_blank" rel="noopener noreferrer">
+								@MaksimVictorovichP
+							</a>
+						</p>
+						<p class="footer__contact">
+							<svg width="20" height="20" aria-hidden="true" style="margin-right: 8px">
+								<use href="#email-icon"></use>
+							</svg>
+							Email:
+							<a href="mailto:batti@ya.ru">batti@ya.ru</a>
+						</p>
+						<p class="footer__contact">
+							<svg width="20" height="20" aria-hidden="true" style="margin-right: 8px">
+								<use href="#phone-icon"></use>
+							</svg>
+							Телефон:
+							<a href="tel:+79057353580">+7 (905) 735-35-80</a>
+						</p>
+					</div>
+				</div>
+				<div class="footer__avatar">
+					<img
+						src="img/avatar.jpg"
+						alt="Максим Поляков - Frontend разработчик"
+						width="260"
+						height="260"
+						loading="lazy"
+					/>
+				</div>
+			</div>
+		</footer>
+
+		<!-- SVG спрайт для иконок -->
+		<svg style="display: none">
+			<symbol id="telegram-icon" viewBox="0 0 24 24">
+				<path
+					fill="currentColor"
+					d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.198l-1.84 8.68c-.129.585-.466.73-.945.456l-2.62-1.93-1.263 1.216c-.14.14-.258.258-.517.258l.184-2.62 4.846-4.38c.194-.18-.042-.28-.3-.1l-5.99 3.77-2.58-.8c-.63-.194-.642-.63.133-.93l10.1-3.89c.515-.194.968.13.8.93z"
+				/>
+			</symbol>
+			<symbol id="email-icon" viewBox="0 0 24 24">
+				<path
+					fill="currentColor"
+					d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+				/>
+			</symbol>
+			<symbol id="phone-icon" viewBox="0 0 24 24">
+				<path
+					fill="currentColor"
+					d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+				/>
+			</symbol>
+		</svg>
+
+		<script src="js/skills.js" defer></script>
+		<script src="js/projects.js" defer></script>
+		<script src="js/awards.js" defer></script>
+		<script src="js/education.js" defer></script>
+		<script src="js/mobile-scroll-fix.js" defer></script>
+
+		<!-- Модальное окно для диплома -->
+		<div id="diploma-modal" class="modal" role="dialog" aria-modal="true">
+			<div class="modal-content">
+				<button class="modal-close" aria-label="Закрыть">×</button>
+				<img id="diploma-img" src="" alt="Диплом SkillBox" />
+			</div>
+		</div>
+	</body>
+</html>

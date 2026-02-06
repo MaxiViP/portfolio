@@ -1,0 +1,68 @@
+@import url('_fonts.css');
+@import url('_variables.css');
+@import url('_mixins.css');
+@import url('normalize.css');
+@import url('_reset.css');
+@import url('_elements.css');
+@import url('_buttons.css');
+@import url('_header.css');
+@import url('_card.css');
+@import url('_skills.css');
+@import url('_projects.css');
+@import url('_awards.css');
+@import url('_footer.css');
+@import url('_utilities.css');
+@import url('_education.css');
+@import url('_modal.css');
+@import url('_mobile-fixes.css');
+
+@supports (-webkit-touch-callout: none) {
+	.hero__title {
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
+
+@-moz-document url-prefix() {
+	.card {
+		background: var(--color-surface-dark);
+	}
+}
+
+@media (forced-colors: active) {
+	.btn {
+		border: 2px solid currentColor;
+	}
+
+	.card {
+		border: 1px solid currentColor;
+	}
+}
+
+@media print {
+	.hero,
+	.footer {
+		background: none !important;
+		color: #000 !important;
+	}
+
+	.btn,
+	.carousel__btn,
+	.awards-wrapper::-webkit-scrollbar {
+		display: none !important;
+	}
+
+	.awards-wrapper {
+		overflow: visible !important;
+	}
+
+	.awards {
+		flex-wrap: wrap !important;
+		justify-content: flex-start !important;
+	}
+
+	.award {
+		break-inside: avoid;
+		width: 48% !important;
+	}
+}

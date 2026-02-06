@@ -1,0 +1,82 @@
+/* Список навыков */
+.skills-list {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.125rem);
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+@media (min-width: 480px) {
+  .skill {
+    grid-template-columns: minmax(120px, 160px) 1fr;
+    align-items: center;
+    gap: clamp(0.75rem, 2vw, 1rem);
+  }
+}
+
+.skill__name {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: var(--text-base);
+}
+
+.skill__bar {
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: var(--radius-md);
+  height: clamp(0.625rem, 1.5vw, 0.75rem);
+  overflow: hidden;
+  position: relative;
+}
+
+.skill__level {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: inherit;
+  transform-origin: left;
+  animation: skillFill 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes skillFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(var(--level, 0.8));
+  }
+}
+
+/* Радар навыков */
+.radar-container {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.radar-svg {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+}
+
+.radar-grid {
+  fill: none;
+  stroke: #334155;
+  stroke-width: 1;
+}
+
+.radar-fill {
+  fill: rgba(59, 130, 246, 0.35);
+  stroke: var(--color-primary);
+  stroke-width: 3;
+}
+
+.radar-svg text {
+  fill: var(--color-text);
+  font-size: 1rem;
+  font-weight: 500;
+}
