@@ -153,6 +153,8 @@
 
 /* Горизонтальный скроллбар (только на десктопе) */
 @media (min-width: 768px) {
+
+
   .awards-wrapper.horizontal::-webkit-scrollbar {
     height: 8px;
   }
@@ -339,7 +341,7 @@
   
   /* Вертикальный режим на мобильных */
   .awards-wrapper.vertical {
-    max-height: 400px;
+    /* max-height: 400px; */
     padding-right: 0.25rem;
   }
 }

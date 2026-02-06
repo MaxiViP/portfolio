@@ -419,7 +419,7 @@
 /* Подсказка скролла */
 .hero__scroll-hint {
     position: absolute;
-    bottom: 2rem;
+    bottom: 0.5px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;

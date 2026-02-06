@@ -218,8 +218,26 @@
 
 				<!-- Образование и курсы -->
 				<section class="card main-grid__full" aria-labelledby="education-title">
-					<h2 id="education-title" class="card__title">Образование и курсы</h2>
+					<div class="education-header">
+						<h2 id="education-title" class="card__title">
+							<span class="education-title-text">Образование и курсы</span>
+							<span class="education-title-highlight"></span>
+						</h2>
+
+						<div class="education-badges" aria-hidden="true">
+							<span class="education-badge">🎓 Колледж</span>
+							<span class="education-badge">🏛️ Университет</span>
+							<span class="education-badge">💻 Курсы</span>
+						</div>
+					</div>
+
 					<div id="education" class="education-list"></div>
+
+					<div class="education-timeline">
+						<div class="education-timeline-line"></div>
+						<div class="education-timeline-start" aria-hidden="true">📚</div>
+						<div class="education-timeline-end" aria-hidden="true">🚀</div>
+					</div>
 				</section>
 			</div>
 		</main>
@@ -433,7 +451,7 @@
 		<script src="js/projects.js" defer></script>
 		<script src="js/awards.js" defer></script>
 		<script src="js/education.js" defer></script>
-    <script src="js/scroll-to-top.js" defer></script>
+		<script src="js/scroll-to-top.js" defer></script>
 
 		<!-- Модальное окно для диплома -->
 		<div id="diploma-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
