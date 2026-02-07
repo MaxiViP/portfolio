@@ -1,4 +1,3 @@
-// scroll-to-top.js
 document.addEventListener('DOMContentLoaded', function () {
 	const backToTopBtn = document.querySelector('.footer__back-btn')
 

@@ -1,6 +1,3 @@
-/* ==========================
-   Global Styles
-========================== */
 html,
 body {
 	overflow-x: hidden;
@@ -9,7 +6,7 @@ body {
 	position: relative;
 	margin: 0;
 	padding: 0;
-	font-size: 16px; /* базовый размер */
+	font-size: 16px;
 	box-sizing: border-box;
 }
 
@@ -40,12 +37,9 @@ a,
 	overflow-x: hidden;
 	width: 100%;
 	max-width: 100%;
-	padding: 0 1rem;
+	padding: 0 16px;
 }
 
-/* ==========================
-   Layout Containers
-========================== */
 .flex-container {
 	display: flex;
 	flex-wrap: wrap;
@@ -53,13 +47,10 @@ a,
 
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr)); /* 300px = 18.75rem */
-	gap: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 16px;
 }
 
-/* ==========================
-   Cards & Sections
-========================== */
 .card,
 .card__title,
 .projects-grid,
@@ -72,7 +63,7 @@ a,
 .hero__avatar,
 .footer__avatar {
 	width: 100%;
-	max-width: 100%;
+	max-width: 1600px;
 }
 
 .card {
@@ -82,7 +73,7 @@ a,
 .info-item {
 	display: flex;
 	flex-direction: column;
-	gap: 0.25rem;
+	gap: 4px;
 }
 
 .info-item__label {
@@ -90,12 +81,9 @@ a,
 	color: var(--color-primary-light);
 }
 
-/* ==========================
-   Hero & Footer
-========================== */
 .hero__avatar img,
 .footer__avatar img {
-	max-width: 12.5rem; /* 200px */
+	max-width: 200px;
 	height: auto;
 	margin: 0 auto;
 	display: block;
@@ -108,18 +96,15 @@ a,
 }
 
 .hero__title {
-	font-size: 2rem; /* 32px */
+	font-size: 32px;
 	font-weight: 700;
 }
 
 .hero__description {
-	font-size: 1rem; /* 16px */
+	font-size: 16px;
 	line-height: 1.5;
 }
 
-/* ==========================
-   Utility Classes
-========================== */
 .no-horizontal-scroll {
 	overflow-x: hidden;
 	max-width: 100%;
@@ -140,18 +125,15 @@ a,
 	outline: 1px solid rgba(255, 0, 0, 0.3);
 }
 
-/* ==========================
-   Mobile & Small Screens
-========================== */
 @media (max-width: 767px) {
 	body {
-		font-size: 0.875rem; /* 14px */
+		font-size: 14px;
 	}
 
 	.main-grid {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem; /* 24px */
+		gap: 24px;
 		width: 100%;
 	}
 
@@ -172,12 +154,12 @@ a,
 	.info-grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1rem; /* 16px */
+		gap: 16px;
 	}
 
 	.info-item {
 		flex-direction: column;
-		gap: 0.25rem; /* 4px */
+		gap: 4px;
 	}
 
 	.radar-container {
@@ -191,15 +173,15 @@ a,
 	.radar-svg {
 		width: 100%;
 		height: auto;
-		max-width: 18.75rem; /* 300px */
-		max-height: 18.75rem;
+		max-width: 300px;
+		max-height: 300px;
 	}
 
 	.view-toggle-btn {
 		position: relative;
 		top: auto;
 		right: auto;
-		margin: 1rem 0;
+		margin: 16px 0;
 		width: 100%;
 		display: block;
 		box-sizing: border-box;
@@ -208,7 +190,7 @@ a,
 	.card__title {
 		padding-right: 0;
 		margin-right: 0;
-		font-size: 1.25rem; /* 20px */
+		font-size: 20px;
 	}
 
 	.achievements-carousel,
@@ -220,12 +202,17 @@ a,
 		box-sizing: border-box;
 	}
 
+	.hero__avatar-wrapper,
+	.footer__avatar-wrapper {
+		max-width: 295px;
+	}
+
 	.awards-wrapper.horizontal {
-		margin-left: -1rem;
-		margin-right: -1rem;
-		padding-left: 1rem;
-		padding-right: 1rem;
-		width: calc(100% + 2rem);
+		margin-left: -16px;
+		margin-right: -16px;
+		padding-left: 16px;
+		padding-right: 16px;
+		width: calc(100% + 32px);
 	}
 
 	.carousel__btn {
@@ -238,29 +225,29 @@ a,
 	}
 
 	.projects-grid {
-		gap: 1rem;
+		gap: 16px;
 	}
 
 	.project:hover {
-		transform: translateY(-0.5rem); /* 8px */
+		transform: translateY(-8px);
 	}
 
 	.education-item {
-		padding: 1rem; /* 16px */
+		padding: 16px;
 	}
 
 	.hero__title {
-		font-size: 1.75rem; /* 28px */
+		font-size: 28px;
 	}
 
 	.hero__description {
-		font-size: 0.9rem; /* 14.4px */
+		font-size: 14.4px;
 		line-height: 1.4;
 	}
 
 	.btn {
-		padding: 0.5rem 1rem;
-		font-size: 0.875rem; /* 14px */
+		padding: 8px 16px;
+		font-size: 14px;
 	}
 
 	.card {
@@ -270,15 +257,323 @@ a,
 
 @media (max-width: 375px) {
 	.container {
-		padding-left: 0.75rem; /* 12px */
-		padding-right: 0.75rem;
+		padding-left: 12px;
+		padding-right: 12px;
 	}
 
 	.hero__title {
-		font-size: 1.75rem; /* 28px */
+		font-size: 28px;
 	}
 
 	.hero__description {
-		font-size: 0.9rem; /* 14.4px */
+		font-size: 14.4px;
+	}
+
+	.main-grid {
+		padding-inline: 0;
+	}
+}
+
+/* Медиа-запросы для очень маленьких экранов */
+@media (max-width: 320px) {
+	/* Общие стили */
+	body {
+		font-size: 13px;
+	}
+
+	.container {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	/* Герой секция */
+	.hero {
+		padding-block: 40px 48px;
+		min-height: auto;
+	}
+
+	.hero__badge {
+		padding: 6px 16px;
+		font-size: 12px;
+		margin-bottom: 24px;
+	}
+
+	.hero__title {
+		font-size: 28px;
+	}
+
+	.hero__title-text {
+		font-size: 28px;
+	}
+
+	.hero__position {
+		font-size: 16px;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	.hero__description {
+		font-size: 14px;
+		gap: 8px;
+	}
+
+	.hero__description-icon {
+		font-size: 20px;
+		margin-top: 2px;
+	}
+
+	.hero__stats {
+		gap: 16px;
+		margin-bottom: 32px;
+	}
+
+	.hero__stat-number {
+		font-size: 32px;
+	}
+
+	.hero__stat-label {
+		font-size: 12px;
+	}
+
+	.hero__actions {
+		flex-direction: column;
+		gap: 12px;
+		margin-bottom: 32px;
+	}
+
+	.btn--with-icon {
+		padding: 14px 24px;
+		font-size: 14px;
+		justify-content: center;
+	}
+
+	.hero__tech-stack {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.hero__tech-icons {
+		gap: 6px;
+	}
+
+	.hero__tech-icon {
+		padding: 4px 12px;
+		font-size: 12px;
+	}
+
+	.hero__avatar-wrapper {
+		width: 280px;
+	}
+
+	.hero__availability {
+		justify-content: flex-start;
+	}
+
+	/* Секция образования */
+	.education-header {
+		margin-bottom: 2rem;
+	}
+
+	.education-title {
+		font-size: 24px;
+	}
+
+	.education-badges {
+		gap: 0.5rem;
+		margin-top: 1rem;
+	}
+
+	.education-badge {
+		padding: 0.375rem 0.75rem;
+		font-size: 11px;
+	}
+
+	.education-list {
+		gap: 1.5rem;
+	}
+
+	.education-item {
+		padding: 1.5rem;
+	}
+
+	.education-item-content {
+		gap: 1rem;
+	}
+
+	.education-icon {
+		width: 44px;
+		height: 44px;
+		font-size: 1.5rem;
+	}
+
+	.education-title {
+		font-size: 1.125rem;
+	}
+
+	.education-type {
+		padding: 0.25rem 0.75rem;
+		font-size: 11px;
+	}
+
+	.education-meta {
+		gap: 1rem;
+		margin-top: 0.25rem;
+	}
+
+	.education-meta-item {
+		font-size: 11px;
+		gap: 0.375rem;
+	}
+
+	.education-meta-icon {
+		font-size: 0.875rem;
+	}
+
+	.education-specialty {
+		font-size: 1rem;
+		margin-top: 0.375rem;
+		padding-left: 0.75rem;
+	}
+
+	.education-diploma-thumb {
+		width: 90px;
+		height: 90px;
+	}
+
+	.education-diploma-label {
+		padding: 0.375rem 0.75rem;
+		font-size: 11px;
+	}
+
+	/* Карточки и контент */
+	.card {
+		padding: 12px;
+	}
+
+	.card__title {
+		font-size: 18px;
+	}
+
+	.hero__inner {
+		padding-inline: 10px;
+		gap: 48px;
+	}
+
+	.info-grid {
+		gap: 12px;
+	}
+
+	.info-item__label {
+		font-size: 13px;
+	}
+
+	.info-item__value {
+		font-size: 13px;
+	}
+
+	/* Проекты */
+	.projects-grid {
+		gap: 12px;
+	}
+
+	.project {
+		padding: 0;
+	}
+
+	.project__title {
+		font-size: 18px;
+	}
+
+	.project__description {
+		font-size: 13px;
+	}
+
+	/* Ачивки и награды */
+	.award-item {
+		min-width: 85vw;
+		max-width: 90vw;
+		padding: 12px;
+	}
+
+	/* Футер */
+	.footer__inner {
+		padding-inline: 10px;
+	}
+
+	/* Кнопки */
+	.btn {
+		padding: 10px 20px;
+		font-size: 13px;
+	}
+
+	/* Утилиты */
+	.wrap-text,
+	.info-item__value {
+		word-break: break-word;
+		overflow-wrap: break-word;
+		hyphens: auto;
+	}
+}
+
+@media (max-width: 280px) {
+	body {
+		font-size: 12px;
+	}
+
+	.container {
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+
+	.hero__inner {
+		padding-inline: 8px;
+		gap: 32px;
+	}
+
+	.hero__title {
+		font-size: 24px;
+	}
+
+	.hero__title-text {
+		font-size: 24px;
+	}
+
+	.hero__avatar-wrapper {
+		width: 240px;
+	}
+
+	.card {
+		padding: 10px;
+	}
+
+	.btn {
+		padding: 8px 16px;
+		font-size: 12px;
+	}
+
+	.hero__badge {
+		padding: 4px 12px;
+		font-size: 11px;
+	}
+
+	.education-item {
+		padding: 1rem;
+	}
+
+	.education-icon {
+		width: 40px;
+		height: 40px;
+		font-size: 1.25rem;
+	}
+
+	.education-title {
+		font-size: 1rem;
+	}
+
+	.education-diploma-thumb {
+		width: 80px;
+		height: 80px;
 	}
 }

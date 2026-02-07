@@ -1,4 +1,3 @@
-// skills.js
 const skills = [
 	{ name: 'Vue 3', level: 92, color: '#42b883' },
 	{ name: 'TypeScript', level: 85, color: '#3178c6' },

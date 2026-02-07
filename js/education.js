@@ -1,5 +1,3 @@
-// education.js
-
 const educationData = [
 	{
 		id: 1,

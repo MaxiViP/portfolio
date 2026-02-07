@@ -1,10 +1,10 @@
 .hero {
 	background: #0f172a;
 	padding-block: 72px 96px;
-	/* padding-inline: 20px; */
 	position: relative;
 	isolation: isolate;
 	overflow: hidden;
+
 	min-height: 80vh;
 	display: flex;
 	align-items: center;
@@ -60,12 +60,11 @@
 	grid-template-columns: 1fr;
 	gap: 64px;
 	align-items: center;
-	max-width: 1400px;
 	margin-inline: auto;
-	width: 100%;
 	position: relative;
 	z-index: 1;
-}
+} 
+
 .hero__content {
 	max-width: 560px;
 }
@@ -460,16 +459,16 @@
 		max-width: 560px;
 	}
 }
-/* На всех экранах меньше 1024px — аватар сверху */
+
 @media (max-width: 1023px) {
 	.hero__avatar-wrapper {
-		order: -1; /* поднимаем аватар наверх */
-		margin-bottom: 48px; /* хороший отступ снизу */
+		order: -1;
+		margin-bottom: 48px;
 		margin-inline: auto;
 	}
 
 	.hero__avatar-wrapper {
-		max-width: 560px; /* чуть меньше, чем 350px, чтобы лучше смотрелось */
+		max-width: 560px;
 	}
 }
 
@@ -515,11 +514,6 @@
 }
 
 @media (min-width: 769px) and (max-width: 1023px) {
-	/* .hero__inner {
-		grid-template-columns: 1fr;
-		gap: 48px;
-	} */
-
 	.hero__avatar-wrapper {
 		max-width: 300px;
 	}

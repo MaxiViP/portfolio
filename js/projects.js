@@ -1,5 +1,3 @@
-// projects.js
-
 const projects = [
 	{
 		title: 'VK Marusya CinemaGuide',
