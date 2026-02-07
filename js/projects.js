@@ -1,5 +1,3 @@
-// projects.js
-
 const projects = [
 	{
 		title: 'VK Marusya CinemaGuide',
@@ -26,7 +24,7 @@ const projects = [
 		description:
 			'Full-stack приложение для заметок с Markdown: SPA-фронтенд, аутентификация (email и Google OAuth), поиск, фильтрация и экспорт в PDF.',
 		image: 'img/SkillNotes.png',
-		github: 'https://gitlab.skillbox.ru/maksim_poliakov_3/course_node/-/tree/master/99_diploma?ref_type=heads',
+		github: 'https://github.com/MaxiViP/che-notes-fullstack',
 		video: null,
 		link: null,
 		tech: ['Svelte', 'SPA Router', 'Node.js', 'Express', 'MongoDB', 'Markdown', 'OAuth 2.0'],
@@ -74,101 +72,170 @@ const projects = [
 ]
 
 const projectsContainer = document.getElementById('projects')
+const projectsMoreContainer = document.getElementById('projects-more-container')
+const showAllBtn = document.getElementById('show-all-projects')
 
-// Функция для создания карточек проектов
-function createProjectCards() {
-	projects.forEach((p, index) => {
-		const el = document.createElement('div')
-		el.className = 'project'
-		el.setAttribute('data-index', index)
-		el.setAttribute('role', 'article')
-		el.setAttribute('aria-label', `Проект: ${p.title}`)
+// Конфигурация
+const MOBILE_BREAKPOINT = 768
+const PROJECTS_LIMIT_MOBILE = 3
 
-		// Создаем ссылки
-		let linksHTML = ''
+// Переменные состояния
+let isMobile = window.innerWidth < MOBILE_BREAKPOINT
+let allProjectsVisible = false
 
-		if (p.github) {
-			linksHTML += `
-				<a href="${p.github}" target="_blank" rel="noopener noreferrer" 
-				   class="project-link github" 
-				   aria-label="Посмотреть код на GitHub">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-						<path d="M9 18c-4.51 2-5-2-7-2"/>
-					</svg>
-					GitHub
-				</a>
-			`
-		}
+// Функция создания карточки проекта
+function createProjectCard(p, index) {
+	const el = document.createElement('div')
+	el.className = 'project'
+	el.setAttribute('data-index', index)
+	el.setAttribute('role', 'article')
+	el.setAttribute('aria-label', `Проект: ${p.title}`)
 
-		if (p.video) {
-			linksHTML += `
-				<a href="${p.video}" target="_blank" rel="noopener noreferrer" 
-				   class="project-link video" 
-				   aria-label="Смотреть видео демонстрацию">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<rect x="2" y="6" width="20" height="12" rx="2" ry="2"/>
-						<path d="m10 9 5 3-5 3Z"/>
-					</svg>
-					Видео
-				</a>
-			`
-		}
+	// Создаем ссылки
+	let linksHTML = ''
 
-		if (p.link) {
-			linksHTML += `
-				<a href="${p.link}" target="_blank" rel="noopener noreferrer" 
-				   class="project-link site" 
-				   aria-label="Перейти на сайт проекта">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<circle cx="12" cy="12" r="10"/>
-						<line x1="2" y1="12" x2="22" y2="12"/>
-						<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-					</svg>
-					Сайт
-				</a>
-			`
-		}
-
-		// Создаем теги технологий
-		const techTags = p.tech
-			.map(tech => `<span class="project__tag" aria-label="Технология: ${tech}">${tech}</span>`)
-			.join('')
-
-		el.innerHTML = `
-			<img src="${p.image}" alt="${p.title}" 
-				 class="project__image" 
-				 loading="lazy"
-				 data-src="${p.image}">
-			
-			<div class="project__content">
-				<h3 class="project__title">${p.title}</h3>
-				<p class="project__description">${p.description}</p>
-				
-				${
-					linksHTML
-						? `
-				<div class="project__links">
-					${linksHTML}
-				</div>
-				`
-						: ''
-				}
-				
-				${
-					techTags
-						? `
-				<div class="project__meta">
-					${techTags}
-				</div>
-				`
-						: ''
-				}
-			</div>
+	if (p.github) {
+		linksHTML += `
+			<a href="${p.github}" target="_blank" rel="noopener noreferrer" 
+			   class="project-link github" 
+			   aria-label="Посмотреть код на GitHub">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+					<path d="M9 18c-4.51 2-5-2-7-2"/>
+				</svg>
+				GitHub
+			</a>
 		`
+	}
 
-		projectsContainer.appendChild(el)
+	if (p.video) {
+		linksHTML += `
+			<a href="${p.video}" target="_blank" rel="noopener noreferrer" 
+			   class="project-link video" 
+			   aria-label="Смотреть видео демонстрацию">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<rect x="2" y="6" width="20" height="12" rx="2" ry="2"/>
+					<path d="m10 9 5 3-5 3Z"/>
+				</svg>
+				Видео
+			</a>
+		`
+	}
+
+	if (p.link) {
+		linksHTML += `
+			<a href="${p.link}" target="_blank" rel="noopener noreferrer" 
+			   class="project-link site" 
+			   aria-label="Перейти на сайт проекта">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<circle cx="12" cy="12" r="10"/>
+					<line x1="2" y1="12" x2="22" y2="12"/>
+					<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+				</svg>
+				Сайт
+			</a>
+		`
+	}
+
+	// Создаем теги технологий
+	const techTags = p.tech
+		.map(tech => `<span class="project__tag" aria-label="Технология: ${tech}">${tech}</span>`)
+		.join('')
+
+	el.innerHTML = `
+		<img src="${p.image}" alt="${p.title}" 
+			 class="project__image" 
+			 loading="lazy"
+			 data-src="${p.image}">
+		
+		<div class="project__content">
+			<h3 class="project__title">${p.title}</h3>
+			<p class="project__description">${p.description}</p>
+			
+			${
+				linksHTML
+					? `
+			<div class="project__links">
+				${linksHTML}
+			</div>
+			`
+					: ''
+			}
+			
+			${
+				techTags
+					? `
+			<div class="project__meta">
+				${techTags}
+			</div>
+			`
+					: ''
+			}
+		</div>
+	`
+
+	return el
+}
+
+// Функция отрисовки проектов с учетом лимита
+function renderProjects() {
+	// Очищаем контейнер
+	projectsContainer.innerHTML = ''
+
+	// Определяем сколько проектов показывать
+	let projectsToShow = projects
+	if (isMobile && !allProjectsVisible) {
+		projectsToShow = projects.slice(0, PROJECTS_LIMIT_MOBILE)
+	}
+
+	// Создаем и добавляем карточки
+	projectsToShow.forEach((project, index) => {
+		const card = createProjectCard(project, index)
+		projectsContainer.appendChild(card)
 	})
+
+	// Управляем видимостью кнопки "Показать все"
+	if (isMobile && projects.length > PROJECTS_LIMIT_MOBILE) {
+		projectsMoreContainer.style.display = 'block'
+
+		if (allProjectsVisible) {
+			showAllBtn.innerHTML = `
+				Скрыть проекты
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M18 15l-6-6-6 6"/>
+				</svg>
+			`
+			showAllBtn.setAttribute('aria-expanded', 'true')
+		} else {
+			showAllBtn.innerHTML = `
+				Показать все проекты (${projects.length})
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M6 9l6 6 6-6"/>
+				</svg>
+			`
+			showAllBtn.setAttribute('aria-expanded', 'false')
+		}
+	} else {
+		projectsMoreContainer.style.display = 'none'
+	}
+
+	// Инициализируем ленивую загрузку и анимации
+	initLazyLoading()
+	animateProjects()
+	initTouchOptimization()
+}
+
+// Функция переключения видимости всех проектов
+function toggleAllProjects() {
+	allProjectsVisible = !allProjectsVisible
+	renderProjects()
+
+	// Плавная прокрутка к кнопке при скрытии проектов
+	if (!allProjectsVisible) {
+		setTimeout(() => {
+			showAllBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+		}, 100)
+	}
 }
 
 // Инициализация ленивой загрузки изображений
@@ -206,9 +273,9 @@ function initLazyLoading() {
 
 // Анимация появления карточек
 function animateProjects() {
-	const projects = document.querySelectorAll('.project')
+	const projectElements = document.querySelectorAll('.project')
 
-	projects.forEach((project, index) => {
+	projectElements.forEach((project, index) => {
 		project.style.setProperty('--item-index', index)
 
 		// Добавляем атрибуты доступности
@@ -233,9 +300,9 @@ function initTouchOptimization() {
 	if ('ontouchstart' in window) {
 		document.body.classList.add('touch-device')
 
-		const projects = document.querySelectorAll('.project')
+		const projectElements = document.querySelectorAll('.project')
 
-		projects.forEach(project => {
+		projectElements.forEach(project => {
 			// Убираем hover-эффекты для touch
 			project.style.cursor = 'pointer'
 
@@ -264,15 +331,49 @@ function initTouchOptimization() {
 	}
 }
 
+// Обработчик изменения размера окна
+function handleResize() {
+	const newIsMobile = window.innerWidth < MOBILE_BREAKPOINT
+
+	// Если изменился режим (мобильный/десктоп), перерисовываем
+	if (newIsMobile !== isMobile) {
+		isMobile = newIsMobile
+
+		// На десктопе всегда показываем все проекты
+		if (!isMobile) {
+			allProjectsVisible = true
+		}
+
+		renderProjects()
+	}
+}
+
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', () => {
-	createProjectCards()
-	initLazyLoading()
-	animateProjects()
-	initTouchOptimization()
+	// Определяем начальное состояние
+	isMobile = window.innerWidth < MOBILE_BREAKPOINT
+
+	// На десктопе сразу показываем все проекты
+	if (!isMobile) {
+		allProjectsVisible = true
+	}
+
+	// Первая отрисовка
+	renderProjects()
+
+	// Назначаем обработчик для кнопки
+	if (showAllBtn) {
+		showAllBtn.addEventListener('click', toggleAllProjects)
+	}
+
+	// Обработчик изменения размера окна
+	window.addEventListener('resize', handleResize)
 })
 
 // Обработчик изменения ориентации
 window.addEventListener('orientationchange', () => {
-	setTimeout(animateProjects, 100)
+	setTimeout(() => {
+		handleResize()
+		animateProjects()
+	}, 100)
 })

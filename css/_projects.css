@@ -91,7 +91,6 @@
 }
 
 .project-link {
-	position: relative;
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
@@ -134,6 +133,16 @@
 .project-link:focus-visible {
 	outline: 2px solid currentColor;
 	outline-offset: 2px;
+}
+
+.project-link::before {
+	content: '';
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .project__meta {
