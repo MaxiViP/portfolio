@@ -1,19 +1,19 @@
 @import url('_fonts.css');
 @import url('_variables.css');
-@import url('_mixins.css');
 @import url('normalize.css');
-@import url('_reset.css');
+
 @import url('_elements.css');
+@import url('_education.css');
 @import url('_buttons.css');
 @import url('_header.css');
+@import url('_footer.css');
+
 @import url('_card.css');
 @import url('_skills.css');
 @import url('_projects.css');
 @import url('_awards.css');
-@import url('_footer.css');
-@import url('_utilities.css');
-@import url('_education.css');
 @import url('_modal.css');
+
 @import url('_mobile-fixes.css');
 
 @supports (-webkit-touch-callout: none) {
@@ -25,7 +25,7 @@
 
 @-moz-document url-prefix() {
 	.card {
-		background: var(--color-surface-dark);
+		background-color: var(--color-surface-dark);
 	}
 }
 

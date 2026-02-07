@@ -51,7 +51,7 @@ function createFloatingBackToTopButton() {
 	floatingBtn.className = 'floating-back-to-top'
 	floatingBtn.setAttribute('aria-label', 'Вернуться к началу страницы')
 	floatingBtn.innerHTML = `
-        <svg width="20" height="20" aria-hidden="true">
+        <svg width="25" height="25" aria-hidden="true">
             <path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" fill="none"/>
         </svg>
     `

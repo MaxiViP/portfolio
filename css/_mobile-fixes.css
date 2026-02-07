@@ -1,256 +1,32 @@
-/* _mobile-fixes.css */
-/* Исправления горизонтального скролла на мобильных устройствах */
-
-/* ============================= */
-/* БАЗОВЫЕ ИСПРАВЛЕНИЯ */
-/* ============================= */
-
-/* Предотвращаем горизонтальный скролл на уровне документа */
+/* ==========================
+   Global Styles
+========================== */
 html,
 body {
 	overflow-x: hidden;
-	max-width: 100%;
 	width: 100%;
+	max-width: 100%;
 	position: relative;
-}
-
-/* Исправление для контейнера */
-.container {
-	width: 100%;
-	max-width: 100%;
-	overflow-x: hidden;
-}
-
-/* Исправление для основной сетки на мобильных */
-@media (max-width: 767px) {
-	.main-grid {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-		width: 100%;
-		max-width: 100%;
-		overflow-x: hidden;
-	}
-
-	.main-grid__full {
-		width: 100%;
-		max-width: 100%;
-	}
-}
-
-/* ============================= */
-/* ИСПРАВЛЕНИЯ ДЛЯ КАРТОЧЕК */
-/* ============================= */
-
-/* Убеждаемся, что карточки не выходят за пределы */
-.card {
-	width: 100%;
-	max-width: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 16px; /* базовый размер */
 	box-sizing: border-box;
-	overflow: hidden;
 }
 
-/* ============================= */
-/* ИСПРАВЛЕНИЯ ДЛЯ ИНФОРМАЦИОННОЙ СЕТКИ */
-/* ============================= */
-
-@media (max-width: 767px) {
-	.info-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
-		width: 100%;
-		max-width: 100%;
-	}
-
-	.info-item {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-		word-break: break-word;
-		overflow-wrap: break-word;
-	}
-
-	.info-item__label {
-		font-weight: 600;
-		color: var(--color-primary-light);
-	}
-
-	.info-item__value {
-		word-break: break-word;
-	}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
-/* ============================= */
-/* ИСПРАВЛЕНИЯ ДЛЯ РАДАРА НАВЫКОВ */
-/* ============================= */
-
-@media (max-width: 767px) {
-	.radar-container {
-		width: 100%;
-		max-width: 100%;
-		overflow: hidden;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.radar-svg {
-		width: 100%;
-		height: auto;
-		max-width: 300px; /* Ограничиваем максимальную ширину */
-		max-height: 300px;
-	}
-}
-
-/* ============================= */
-/* ИСПРАВЛЕНИЯ ДЛЯ КНОПКИ ПЕРЕКЛЮЧЕНИЯ */
-/* ============================= */
-
-@media (max-width: 767px) {
-	/* Исправляем позиционирование кнопки */
-	.view-toggle-btn {
-		position: relative !important;
-		top: auto !important;
-		right: auto !important;
-		margin: 1rem 0 !important;
-		width: 100% !important;
-		box-sizing: border-box !important;
-		display: block !important;
-	}
-
-	/* Убираем padding у заголовка для кнопки */
-	.card__title {
-		padding-right: 0 !important;
-		margin-right: 0 !important;
-	}
-}
-
-/* ============================= */
-/* ИСПРАВЛЕНИЯ ДЛЯ КАРУСЕЛИ ДОСТИЖЕНИЙ */
-/* ============================= */
-
-@media (max-width: 767px) {
-	.achievements-carousel {
-		margin: 0 !important;
-		padding: 0 !important;
-		width: 100% !important;
-		max-width: 100% !important;
-	}
-
-	.awards-wrapper {
-		width: 100% !important;
-		max-width: 100% !important;
-		padding-left: 1rem !important;
-		padding-right: 1rem !important;
-		box-sizing: border-box !important;
-	}
-
-	.awards-wrapper.horizontal {
-		margin-left: -1rem !important;
-		margin-right: -1rem !important;
-		padding-left: 1rem !important;
-		padding-right: 1rem !important;
-		width: calc(100% + 2rem) !important;
-	}
-
-	/* Скрываем кнопки карусели на мобильных */
-	.carousel__btn {
-		display: none !important;
-	}
-
-	/* Уменьшаем ширину карточек достижений на мобильных */
-	.award-item {
-		min-width: 70vw !important;
-		max-width: 85vw !important;
-	}
-}
-
-/* ============================= */
-/* ИСПРАВЛЕНИЯ ДЛЯ ПРОЕКТОВ */
-/* ============================= */
-
-@media (max-width: 767px) {
-	.projects-grid {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin: 0 !important;
-		padding: 0 !important;
-		gap: 1rem !important;
-	}
-
-	.project {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin: 0 !important;
-	}
-}
-
-/* ============================= */
-/* ИСПРАВЛЕНИЯ ДЛЯ ОБРАЗОВАНИЯ */
-/* ============================= */
-
-@media (max-width: 767px) {
-	.education-item {
-		width: 100% !important;
-		max-width: 100% !important;
-		box-sizing: border-box !important;
-		padding: 1rem !important;
-	}
-
-	.education-item__content {
-		width: 100% !important;
-		max-width: 100% !important;
-	}
-}
-
-/* ============================= */
-/* ИСПРАВЛЕНИЯ ДЛЯ ГЕРОЯ И ФУТЕРА */
-/* ============================= */
-
-@media (max-width: 767px) {
-	.hero__inner,
-	.footer__inner {
-		/* padding-left: 1rem !important; */
-		/* padding-right: 1rem !important; */
-		width: 100% !important;
-		max-width: 100% !important;
-	}
-
-	.hero__content,
-	.footer__content {
-		width: 100% !important;
-		max-width: 95% !important;
-	}
-
-	.hero__avatar,
-	.footer__avatar {
-		width: 100% !important;
-		max-width: 100% !important;
-		text-align: center !important;
-	}
-
-	.hero__avatar img,
-	.footer__avatar img {
-		max-width: 200px !important;
-		height: auto !important;
-		margin: 0 auto !important;
-	}
-}
-
-/* ============================= */
-/* ОБЩИЕ ИСПРАВЛЕНИЯ */
-/* ============================= */
-
-/* Предотвращаем выход изображений за пределы */
 img {
 	max-width: 100%;
 	height: auto;
 	display: block;
 }
 
-/* Исправляем длинные слова и ссылки */
 a,
+.wrap-text,
 .info-item__value,
 .project__title,
 .project__description,
@@ -260,94 +36,101 @@ a,
 	hyphens: auto;
 }
 
-/* Убираем трансформации, которые могут вызывать скролл */
-@media (max-width: 767px) {
-	.project:hover {
-		transform: translateY(-8px) !important;
-	}
-
-	/* Отключаем любые горизонтальные трансформации */
-	* {
-		transform: translateX(0) !important;
-	}
+.container {
+	overflow-x: hidden;
+	width: 100%;
+	max-width: 100%;
+	padding: 0 1rem;
 }
 
-/* Исправляем flex-контейнеры */
+/* ==========================
+   Layout Containers
+========================== */
 .flex-container {
+	display: flex;
 	flex-wrap: wrap;
 }
 
-/* Исправляем гриды */
 .grid-container {
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr)); /* 300px = 18.75rem */
+	gap: 1rem;
 }
 
-/* ============================= */
-/* ЭКСТРЕМАЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ */
-/* ============================= */
-
-@media (max-width: 375px) {
-	body {
-		font-size: 14px;
-	}
-
-	.container {
-		padding-left: 0.75rem !important;
-		padding-right: 0.75rem !important;
-	}
-
-	.card {
-		padding: 0.75rem !important;
-	}
-
-	.hero__title {
-		font-size: 1.75rem !important;
-	}
-
-	.hero__description {
-		font-size: 0.9rem !important;
-		line-height: 1.4 !important;
-	}
-
-	.btn {
-		padding: 0.5rem 1rem !important;
-		font-size: 0.875rem !important;
-	}
-
-	.card__title {
-		font-size: 1.25rem !important;
-	}
+/* ==========================
+   Cards & Sections
+========================== */
+.card,
+.card__title,
+.projects-grid,
+.project,
+.education-item,
+.info-grid,
+.info-item,
+.hero__inner,
+.footer__inner,
+.hero__avatar,
+.footer__avatar {
+	width: 100%;
+	max-width: 100%;
 }
 
-/* ============================= */
-/* УТИЛИТЫ ДЛЯ БЫСТРОГО ИСПРАВЛЕНИЯ */
-/* ============================= */
+.card {
+	overflow: hidden;
+}
 
+.info-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.info-item__label {
+	font-weight: 600;
+	color: var(--color-primary-light);
+}
+
+/* ==========================
+   Hero & Footer
+========================== */
+.hero__avatar img,
+.footer__avatar img {
+	max-width: 12.5rem; /* 200px */
+	height: auto;
+	margin: 0 auto;
+	display: block;
+}
+
+.hero__content,
+.footer__content {
+	width: 100%;
+	max-width: 95%;
+}
+
+.hero__title {
+	font-size: 2rem; /* 32px */
+	font-weight: 700;
+}
+
+.hero__description {
+	font-size: 1rem; /* 16px */
+	line-height: 1.5;
+}
+
+/* ==========================
+   Utility Classes
+========================== */
 .no-horizontal-scroll {
-	overflow-x: hidden !important;
-	max-width: 100% !important;
+	overflow-x: hidden;
+	max-width: 100%;
 }
 
 .full-width-mobile {
-	@media (max-width: 767px) {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
 }
-
-.wrap-text {
-	word-break: break-word;
-	overflow-wrap: break-word;
-	hyphens: auto;
-}
-
-/* ============================= */
-/* DEBUG СТИЛИ (можно удалить после исправления) */
-/* ============================= */
 
 .debug-border {
 	border: 1px solid red;
@@ -355,4 +138,147 @@ a,
 
 .debug-outline * {
 	outline: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+/* ==========================
+   Mobile & Small Screens
+========================== */
+@media (max-width: 767px) {
+	body {
+		font-size: 0.875rem; /* 14px */
+	}
+
+	.main-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem; /* 24px */
+		width: 100%;
+	}
+
+	.main-grid__full,
+	.card,
+	.projects-grid,
+	.project,
+	.education-item,
+	.info-grid,
+	.hero__inner,
+	.footer__inner,
+	.hero__avatar,
+	.footer__avatar {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.info-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem; /* 16px */
+	}
+
+	.info-item {
+		flex-direction: column;
+		gap: 0.25rem; /* 4px */
+	}
+
+	.radar-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.radar-svg {
+		width: 100%;
+		height: auto;
+		max-width: 18.75rem; /* 300px */
+		max-height: 18.75rem;
+	}
+
+	.view-toggle-btn {
+		position: relative;
+		top: auto;
+		right: auto;
+		margin: 1rem 0;
+		width: 100%;
+		display: block;
+		box-sizing: border-box;
+	}
+
+	.card__title {
+		padding-right: 0;
+		margin-right: 0;
+		font-size: 1.25rem; /* 20px */
+	}
+
+	.achievements-carousel,
+	.awards-wrapper {
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.awards-wrapper.horizontal {
+		margin-left: -1rem;
+		margin-right: -1rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		width: calc(100% + 2rem);
+	}
+
+	.carousel__btn {
+		display: none;
+	}
+
+	.award-item {
+		min-width: 70vw;
+		max-width: 85vw;
+	}
+
+	.projects-grid {
+		gap: 1rem;
+	}
+
+	.project:hover {
+		transform: translateY(-0.5rem); /* 8px */
+	}
+
+	.education-item {
+		padding: 1rem; /* 16px */
+	}
+
+	.hero__title {
+		font-size: 1.75rem; /* 28px */
+	}
+
+	.hero__description {
+		font-size: 0.9rem; /* 14.4px */
+		line-height: 1.4;
+	}
+
+	.btn {
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem; /* 14px */
+	}
+
+	.card {
+		padding: 12px;
+	}
+}
+
+@media (max-width: 375px) {
+	.container {
+		padding-left: 0.75rem; /* 12px */
+		padding-right: 0.75rem;
+	}
+
+	.hero__title {
+		font-size: 1.75rem; /* 28px */
+	}
+
+	.hero__description {
+		font-size: 0.9rem; /* 14.4px */
+	}
 }

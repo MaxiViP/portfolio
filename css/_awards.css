@@ -1,4 +1,3 @@
-/* Карусель достижений */
 .achievements-carousel {
   position: relative;
 }
@@ -10,10 +9,10 @@
   background: rgba(59, 130, 246, 0.7);
   color: white;
   border: none;
-  width: clamp(2.5rem, 5vw, 3rem);
-  height: clamp(2.5rem, 5vw, 3rem);
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: 24px;
   cursor: pointer;
   z-index: 10;
   transition: all var(--transition-base);
@@ -34,45 +33,41 @@
 }
 
 .carousel__btn--prev {
-  left: clamp(-1.25rem, -3vw, -1.5rem);
+  left: -24px;
 }
 
 .carousel__btn--next {
-  right: clamp(-1.25rem, -3vw, -1.5rem);
+  right: -24px;
 }
 
-/* БАЗОВЫЕ СТИЛИ КОНТЕЙНЕРА */
 .awards-wrapper {
   scroll-behavior: smooth;
-  padding-block: 0.75rem 1.25rem;
+  padding-block: 12px 20px;
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary-light) #1e293b;
-  -webkit-overflow-scrolling: touch; /* Для плавного скролла на iOS */
+  -webkit-overflow-scrolling: touch;
   scroll-padding-inline: var(--container-padding);
   transition: all var(--transition-base);
+  overscroll-behavior-x: contain;
 }
 
-/* Touch-friendly скролл для мобильных */
-.awards-wrapper {
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain; /* Предотвращает overscroll на iOS */
-}
-
-/* ГОРИЗОНТАЛЬНЫЙ РЕЖИМ */
 .awards-wrapper.horizontal {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 16px;
   overflow-x: auto;
   overflow-y: hidden;
   flex-wrap: nowrap;
-  scroll-snap-type: x mandatory; /* Для прилипания карточек на мобильных */
+  scroll-snap-type: x mandatory;
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .awards-wrapper.horizontal .awards {
   display: flex;
-  gap: 1rem;
-  padding: 0 0.5rem;
+  gap: 16px;
+  padding: 0 8px;
 }
 
 .awards-wrapper.horizontal .award-item {
@@ -82,32 +77,33 @@
   max-width: 280px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
   background: #1e293b;
   border-radius: var(--radius-lg);
-  padding: 0.75rem;
+  padding: 12px;
   box-shadow: var(--shadow-lg);
   transition: transform var(--transition-base);
   margin: 0;
-  scroll-snap-align: start; /* Прилипание к началу карточки */
+  scroll-snap-align: start;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
-/* ВЕРТИКАЛЬНЫЙ РЕЖИМ */
 .awards-wrapper.vertical {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
   overflow-x: hidden;
   overflow-y: auto;
   max-height: 600px;
-  padding-right: 0.5rem;
+  padding-right: 8px;
   -webkit-overflow-scrolling: touch;
 }
 
 .awards-wrapper.vertical .awards {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
   width: 100%;
 }
 
@@ -115,28 +111,19 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
   background: #1e293b;
   border-radius: var(--radius-lg);
-  padding: 0.75rem;
+  padding: 12px;
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-base);
   margin: 0;
 }
 
-/* Скрываем кнопки карусели в вертикальном режиме */
 .awards-wrapper.vertical ~ .carousel__btn {
   display: none !important;
 }
 
-/* Показываем кнопки карусели только в горизонтальном режиме на десктопе */
-@media (min-width: 1024px) {
-  .awards-wrapper.horizontal ~ .carousel__btn {
-    display: flex;
-  }
-}
-
-/* Вертикальный скроллбар */
 .awards-wrapper.vertical::-webkit-scrollbar {
   width: 6px;
 }
@@ -151,61 +138,28 @@
   border-radius: 10px;
 }
 
-/* Горизонтальный скроллбар (только на десктопе) */
-@media (min-width: 768px) {
-
-
-  .awards-wrapper.horizontal::-webkit-scrollbar {
-    height: 8px;
-  }
-  
-  .awards-wrapper.horizontal::-webkit-scrollbar-track {
-    background: #1e293b;
-    border-radius: 10px;
-  }
-  
-  .awards-wrapper.horizontal::-webkit-scrollbar-thumb {
-    background: var(--color-primary-light);
-    border-radius: 10px;
-  }
-}
-
-/* Скрываем скроллбар на мобильных для лучшего UX */
-@media (max-width: 767px) {
-  .awards-wrapper.horizontal::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .awards-wrapper.horizontal {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-}
-
-/* Контейнер для текста в карточке */
 .award-item-content {
   flex: 1;
-  min-width: 0; /* Для правильного обрезания текста */
+  min-width: 0;
 }
 
 .award-item strong {
   display: block;
-  margin-bottom: 0.2rem;
+  margin-bottom: 4px;
   color: white;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 600;
   white-space: normal;
 }
 
 .award-item span {
   color: #cbd5e1;
-  font-size: 0.875rem;
+  font-size: 14px;
   line-height: 1.4;
   white-space: normal;
   display: block;
 }
 
-/* Изображение одинаковое в обоих режимах */
 .award-item img {
   width: 60px;
   height: 60px;
@@ -219,20 +173,19 @@
   box-shadow: var(--shadow-xl);
 }
 
-/* Кнопка переключения */
 .view-toggle-btn {
   position: absolute;
   top: 0;
   right: 0;
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  padding: 8px 16px;
   border: none;
   background: var(--color-primary);
   color: white;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: background 0.3s;
-  font-size: 0.875rem;
+  font-size: 14px;
   z-index: 5;
 }
 
@@ -240,198 +193,10 @@
   background: var(--color-primary-dark);
 }
 
-/* Заголовок секции с отступом под кнопку */
 .card__title {
   position: relative;
   padding-right: 120px;
 }
-
-/* ============================= */
-/* МОБИЛЬНАЯ АДАПТАЦИЯ (До 768px) */
-/* ============================= */
-
-@media (max-width: 768px) {
-  .achievements-carousel {
-    margin: 0 -1rem; /* Расширяем на всю ширину экрана */
-    padding: 0 1rem; /* Добавляем отступы по краям */
-  }
-  
-  /* Увеличиваем touch-область для скролла */
-  .awards-wrapper {
-    padding-block: 1rem;
-  }
-  
-  /* Адаптивные карточки для мобильных */
-  .awards-wrapper.horizontal .award-item {
-    width: 85vw; /* 85% от ширины viewport */
-    min-width: 85vw;
-    max-width: 85vw;
-    padding: 1rem;
-    gap: 0.5rem;
-  }
-  
-  /* Улучшаем отображение карточек на мобильных */
-  .award-item {
-    flex-direction: row;
-    align-items: flex-start;
-    min-height: 100px;
-    touch-action: pan-y; /* Разрешаем вертикальный скролл внутри карточки */
-  }
-  
-  /* Уменьшаем изображение на мобильных */
-  .award-item img {
-    width: 50px;
-    height: 50px;
-    margin-top: 0.25rem;
-  }
-  
-  /* Улучшаем текстовое содержимое для мобильных */
-  .award-item strong {
-    font-size: 0.95rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  .award-item span {
-    font-size: 0.8rem;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Ограничиваем количество строк */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  /* Кнопка переключения вида */
-  .view-toggle-btn {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin: 0.5rem 0 1rem 0;
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    order: -1; /* Перемещаем кнопку перед карточками */
-  }
-  
-  .card__title {
-    padding-right: 0;
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Скрываем кнопки карусели на мобильных */
-  .carousel__btn {
-    display: none !important;
-  }
-  
-  /* Добавляем индикатор скролла для мобильных */
-  .awards-wrapper.horizontal {
-    position: relative;
-  }
-  
-  .awards-wrapper.horizontal::after {
-    content: '';
-    position: absolute;
-    right: -1rem;
-    top: 0;
-    bottom: 0;
-    width: 2rem;
-    background: linear-gradient(90deg, transparent 0%, #0f172a 100%);
-    pointer-events: none;
-  }
-  
-  /* Вертикальный режим на мобильных */
-  .awards-wrapper.vertical {
-    /* max-height: 400px; */
-    padding-right: 0.25rem;
-  }
-}
-
-/* ============================= */
-/* ПЛАНШЕТЫ (769px - 1023px) */
-/* ============================= */
-
-@media (min-width: 769px) and (max-width: 1023px) {
-  .awards-wrapper.horizontal .award-item {
-    width: 320px;
-    min-width: 320px;
-    max-width: 320px;
-  }
-  
-  /* Скрываем кнопки карусели на планшетах */
-  .carousel__btn {
-    display: none !important;
-  }
-  
-  .view-toggle-btn {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin-bottom: 1rem;
-    width: auto;
-  }
-  
-  .card__title {
-    padding-right: 0;
-    margin-bottom: 0.5rem;
-  }
-}
-
-/* ============================= */
-/* ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (До 480px) */
-/* ============================= */
-
-@media (max-width: 480px) {
-  .awards-wrapper.horizontal .award-item {
-    width: 90vw;
-    min-width: 90vw;
-    max-width: 90vw;
-    padding: 0.75rem;
-  }
-  
-  .award-item {
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  
-  .award-item img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 0.25rem;
-  }
-  
-  .award-item strong {
-    font-size: 0.9rem;
-  }
-  
-  .award-item span {
-    font-size: 0.75rem;
-    -webkit-line-clamp: 2;
-  }
-  
-  /* Уменьшаем gap между карточками */
-  .awards-wrapper.horizontal {
-    gap: 0.75rem;
-  }
-}
-
-/* ============================= */
-/* ПРЕДОТВРАЩЕНИЕ ЛАГОВ ПРИ СКРОЛЛЕ */
-/* ============================= */
-
-.awards-wrapper.horizontal {
-  will-change: transform;
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-.award-item {
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-/* ============================= */
-/* ДОСТУПНОСТЬ И FOCUS СТИЛИ */
-/* ============================= */
 
 .award-item:focus-visible {
   outline: 2px solid var(--color-primary);
@@ -444,32 +209,192 @@
   outline-offset: 2px;
 }
 
-/* ============================= */
-/* ПОДСКАЗКА ДЛЯ СКРОЛЛА НА МОБИЛЬНЫХ */
-/* ============================= */
+@media (min-width: 1024px) {
+  .awards-wrapper.horizontal ~ .carousel__btn {
+    display: flex;
+  }
+}
 
-@media (max-width: 768px) and (hover: none) {
+@media (min-width: 769px) and (max-width: 1023px) {
+  .awards-wrapper.horizontal .award-item {
+    width: 320px;
+    min-width: 320px;
+    max-width: 320px;
+  }
+
+  .carousel__btn {
+    display: none !important;
+  }
+
+  .view-toggle-btn {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 16px;
+    width: auto;
+  }
+
+  .card__title {
+    padding-right: 0;
+    margin-bottom: 8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .awards-wrapper.horizontal::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .awards-wrapper.horizontal::-webkit-scrollbar-track {
+    background: #1e293b;
+    border-radius: 10px;
+  }
+
+  .awards-wrapper.horizontal::-webkit-scrollbar-thumb {
+    background: var(--color-primary-light);
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .achievements-carousel {
+    margin: 0 -16px;
+    padding: 0 16px;
+  }
+
+  .awards-wrapper {
+    padding-block: 16px;
+  }
+
+  .awards-wrapper.horizontal .award-item {
+    width: 85vw;
+    min-width: 85vw;
+    max-width: 85vw;
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .award-item {
+    flex-direction: row;
+    align-items: flex-start;
+    min-height: 100px;
+    touch-action: pan-y;
+  }
+
+  .award-item img {
+    width: 50px;
+    height: 50px;
+    margin-top: 4px;
+  }
+
+  .award-item strong {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .award-item span {
+    font-size: 13px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .view-toggle-btn {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 8px 0 16px 0;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    order: -1;
+  }
+
+  .card__title {
+    padding-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .carousel__btn {
+    display: none !important;
+  }
+
+  .awards-wrapper.horizontal {
+    position: relative;
+  }
+
+  .awards-wrapper.horizontal::after {
+    content: '';
+    position: absolute;
+    right: -16px;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    background: linear-gradient(90deg, transparent 0%, #0f172a 100%);
+    pointer-events: none;
+  }
+
   .awards-wrapper.horizontal {
     cursor: grab;
   }
-  
+
   .awards-wrapper.horizontal:active {
     cursor: grabbing;
   }
-}
 
-/* Индикатор для touch-устройств */
-.touch-hint {
-  display: none;
-}
-
-@media (max-width: 768px) and (hover: none) {
   .touch-hint {
     display: block;
     text-align: center;
     color: #94a3b8;
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
-    padding: 0.25rem;
+    font-size: 12px;
+    margin-top: 8px;
+    padding: 4px;
+  }
+}
+
+@media (max-width: 767px) {
+  .awards-wrapper.horizontal::-webkit-scrollbar {
+    display: none;
+  }
+
+  .awards-wrapper.horizontal {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .awards-wrapper.horizontal .award-item {
+    width: 90vw;
+    min-width: 90vw;
+    max-width: 90vw;
+    padding: 12px;
+  }
+
+  .award-item {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .award-item img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 4px;
+  }
+
+  .award-item strong {
+    font-size: 14px;
+  }
+
+  .award-item span {
+    font-size: 12px;
+    -webkit-line-clamp: 2;
+  }
+
+  .awards-wrapper.horizontal {
+    gap: 12px;
   }
 }
