@@ -65,6 +65,7 @@ const wrapper = document.getElementById('awards-wrapper')
 const toggleBtn = document.getElementById('toggle-view')
 const prevBtn = document.querySelector('.carousel__btn--prev')
 const nextBtn = document.querySelector('.carousel__btn--next')
+const touchHint = document.getElementById('touch-hint')
 
 // Переменные для touch-скролла
 let isDragging = false
@@ -168,7 +169,6 @@ function setupTouchScrolling() {
 	)
 }
 
-// Функция переключения режима
 function toggleViewMode() {
 	const isVertical = wrapper.classList.contains('vertical')
 
@@ -178,6 +178,9 @@ function toggleViewMode() {
 		wrapper.classList.add('horizontal')
 		toggleBtn.textContent = 'Вертикально'
 		toggleBtn.setAttribute('aria-label', 'Переключить на вертикальный вид')
+
+		// Показываем подсказку для горизонтального скролла
+		if (touchHint) touchHint.classList.remove('hidden')
 
 		// Включаем горизонтальный скролл
 		wrapper.style.overflowX = 'auto'
@@ -194,6 +197,9 @@ function toggleViewMode() {
 		wrapper.classList.add('vertical')
 		toggleBtn.textContent = 'Горизонтально'
 		toggleBtn.setAttribute('aria-label', 'Переключить на горизонтальный вид')
+
+		// Скрываем подсказку
+		if (touchHint) touchHint.classList.add('hidden')
 
 		// Включаем вертикальный скролл
 		wrapper.style.overflowX = 'hidden'
@@ -258,22 +264,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Создаем карточки
 	createAwardCards()
 
+	// Настройка подсказки
+	const touchHint = document.getElementById('touch-hint')
+
 	// Настраиваем кнопку переключения
 	if (toggleBtn) {
 		toggleBtn.addEventListener('click', toggleViewMode)
-		// Добавляем touch-friendly стиль для мобильных
-		if ('ontouchstart' in window) {
-			toggleBtn.style.minHeight = '44px' // Минимальный размер для касания
-		}
+		if ('ontouchstart' in window) toggleBtn.style.minHeight = '44px'
 	}
 
 	// Настраиваем touch-скролл
 	setupTouchScrolling()
 
-	// Настраиваем карусель (только для десктопа)
+	// Настраиваем карусель
 	setupCarousel()
 
-	// Инициализируем правильный режим
+	// Инициализация режима и подсказки
 	const isInitiallyVertical = wrapper.classList.contains('vertical')
 	if (isInitiallyVertical) {
 		toggleBtn.textContent = 'Горизонтально'
@@ -282,17 +288,18 @@ document.addEventListener('DOMContentLoaded', () => {
 			prevBtn.style.display = 'none'
 			nextBtn.style.display = 'none'
 		}
+		if (touchHint) touchHint.classList.add('hidden')
 	} else {
 		toggleBtn.textContent = 'Вертикально'
 		toggleBtn.setAttribute('aria-label', 'Переключить на вертикальный вид')
-		// Показываем кнопки карусели только на десктопе
 		if (window.innerWidth >= 1024 && prevBtn && nextBtn) {
 			prevBtn.style.display = 'flex'
 			nextBtn.style.display = 'flex'
 		}
+		if (touchHint) touchHint.classList.remove('hidden')
 	}
 
-	// Обработчик изменения размера окна
+	// Обработчик ресайза
 	window.addEventListener('resize', () => {
 		if (wrapper.classList.contains('horizontal')) {
 			if (window.innerWidth >= 1024 && prevBtn && nextBtn) {

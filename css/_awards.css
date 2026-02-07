@@ -2,6 +2,7 @@
 	position: relative;
 }
 
+
 .carousel__btn {
 	position: absolute;
 	top: 50%;
@@ -17,6 +18,10 @@
 	z-index: 10;
 	transition: all var(--transition-base);
 	display: none;
+}
+
+.touch-hint {
+  display: none;
 }
 
 @media (hover: hover) and (min-width: 1024px) {
@@ -352,6 +357,14 @@
 		font-size: 12px;
 		margin-top: 8px;
 		padding: 4px;
+		transition: opacity 0.3s;
+	}
+	.touch-hint.hidden {
+		opacity: 0;
+		height: 0;
+		overflow: hidden;
+		margin: 0;
+		pointer-events: none;
 	}
 }
 
