@@ -1,7 +1,7 @@
 body {
 	background-color: var(--color-surface);
 	color: var(--color-text);
-	font-family: var(--font-primary);
+	font-family: var(--font-primary, 'Roboto', Arial, sans-serif);
 	font-size: var(--text-base);
 	line-height: 1.6;
 	font-weight: 400;
