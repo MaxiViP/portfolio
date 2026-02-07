@@ -233,7 +233,6 @@
 	font-size: 1rem;
 }
 
-/* Таймлайн */
 .education-timeline {
 	position: relative;
 	height: 40px;
@@ -285,7 +284,6 @@
 	}
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
 	.education-item-content {
 		grid-template-columns: 1fr;
@@ -334,7 +332,6 @@
 	}
 }
 
-/* Анимации появления */
 @media (prefers-reduced-motion: no-preference) {
 	.education-item {
 		animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -360,7 +357,6 @@
 	}
 }
 
-/* Для пользователей с настройкой reduced-motion */
 @media (prefers-reduced-motion: reduce) {
 	.education-item {
 		animation: none;

@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	if (!backToTopBtn) return
 
-	// Показать/скрыть кнопку при скролле
 	window.addEventListener('scroll', function () {
 		if (window.pageYOffset > 300) {
 			backToTopBtn.style.opacity = '1'
@@ -16,17 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	})
 
-	// Обработчик клика
 	backToTopBtn.addEventListener('click', function (e) {
 		e.preventDefault()
 
-		// Плавная прокрутка к началу
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
 		})
 
-		// Вернуть фокус на хедер для доступности
 		const header = document.querySelector('header')
 		if (header) {
 			header.setAttribute('tabindex', '-1')
@@ -34,17 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	})
 
-	// Добавим стили для плавного появления
 	backToTopBtn.style.transition = 'all 0.3s ease'
 	backToTopBtn.style.opacity = '0'
 	backToTopBtn.style.visibility = 'hidden'
 	backToTopBtn.style.transform = 'translateY(10px)'
 
-	// Добавим кнопку также в основной контент (плавающую)
 	createFloatingBackToTopButton()
 })
 
-// Создать плавающую кнопку "Наверх"
 function createFloatingBackToTopButton() {
 	const floatingBtn = document.createElement('button')
 	floatingBtn.className = 'floating-back-to-top'
@@ -57,7 +50,6 @@ function createFloatingBackToTopButton() {
 
 	document.body.appendChild(floatingBtn)
 
-	// Стили для плавающей кнопки
 	const style = document.createElement('style')
 	style.textContent = `
         .floating-back-to-top {
@@ -115,7 +107,6 @@ function createFloatingBackToTopButton() {
     `
 	document.head.appendChild(style)
 
-	// Показать/скрыть плавающую кнопку
 	window.addEventListener('scroll', function () {
 		if (window.pageYOffset > 500) {
 			floatingBtn.classList.add('visible')
@@ -124,7 +115,6 @@ function createFloatingBackToTopButton() {
 		}
 	})
 
-	// Клик по плавающей кнопке
 	floatingBtn.addEventListener('click', function () {
 		window.scrollTo({
 			top: 0,

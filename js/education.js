@@ -38,7 +38,6 @@ educationData.forEach(ed => {
 	el.className = 'education-item'
 	el.setAttribute('data-education-id', ed.id)
 
-	// Определяем иконку в зависимости от типа образования
 	let icon = ed.icon || '📚'
 
 	el.innerHTML = `
@@ -102,14 +101,12 @@ educationData.forEach(ed => {
 	educationContainer.appendChild(el)
 })
 
-// Модалка диплома
 const diplomaModal = document.getElementById('diploma-modal')
 const modalImg = document.getElementById('diploma-img')
 const modalClose = diplomaModal.querySelector('.modal-close')
 
-// Обработчики для открытия модального окна
 document.addEventListener('click', function (e) {
-	// Клик по превью диплома
+
 	if (e.target.classList.contains('education-diploma-thumb')) {
 		const diplomaSrc = e.target.getAttribute('data-diploma')
 		if (diplomaSrc) {
@@ -117,7 +114,6 @@ document.addEventListener('click', function (e) {
 		}
 	}
 
-	// Клик по ссылке "Посмотреть диплом"
 	if (e.target.classList.contains('education-diploma-label') || e.target.closest('.education-diploma-label')) {
 		e.preventDefault()
 		const link = e.target.classList.contains('education-diploma-label')
@@ -138,11 +134,9 @@ function openDiplomaModal(src, alt) {
 	diplomaModal.setAttribute('aria-hidden', 'false')
 	document.body.style.overflow = 'hidden'
 
-	// Фокусируемся на кнопке закрытия для доступности
 	setTimeout(() => modalClose.focus(), 100)
 }
 
-// Закрытие модального окна
 modalClose.addEventListener('click', closeDiplomaModal)
 
 diplomaModal.addEventListener('click', function (e) {
@@ -151,7 +145,6 @@ diplomaModal.addEventListener('click', function (e) {
 	}
 })
 
-// Закрытие по Escape
 document.addEventListener('keydown', function (e) {
 	if (e.key === 'Escape' && diplomaModal.classList.contains('show')) {
 		closeDiplomaModal()
@@ -166,7 +159,6 @@ function closeDiplomaModal() {
 	document.body.style.overflow = ''
 }
 
-// Анимации появления
 document.addEventListener('DOMContentLoaded', function () {
 	const educationItems = document.querySelectorAll('.education-item')
 

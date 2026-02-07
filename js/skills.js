@@ -6,8 +6,6 @@ const skills = [
 	{ name: 'Nuxt', level: 78, color: '#00dc82' },
 	{ name: 'Pinia / Vuex', level: 88, color: '#ff6b6b' },
 ]
-
-// Создание прогресс-баров навыков
 document.addEventListener('DOMContentLoaded', function () {
 	const skillsContainer = document.getElementById('skills')
 	if (!skillsContainer) return
@@ -24,12 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
         `
 		skillsContainer.appendChild(el)
 	})
-
-	// Создаем радар
 	createRadar()
 })
 
-// Функция для создания радара
 function createRadar() {
 	const svg = document.querySelector('.radar-svg')
 	if (!svg) return
@@ -40,17 +35,15 @@ function createRadar() {
 	const n = skills.length
 	const angleStep = (2 * Math.PI) / n
 
-	// Генерация точек полигона навыков
 	let points = ''
 	skills.forEach((skill, i) => {
-		const angle = i * angleStep - Math.PI / 2 // начинаем сверху
+		const angle = i * angleStep - Math.PI / 2
 		const radius = maxRadius * (skill.level / 100)
 		const x = centerX + radius * Math.cos(angle)
 		const y = centerY + radius * Math.sin(angle)
 		points += `${x.toFixed(1)},${y.toFixed(1)} `
 	})
 
-	// Позиции подписей
 	let labelsHTML = ''
 	skills.forEach((skill, i) => {
 		const angle = i * angleStep - Math.PI / 2
@@ -75,7 +68,6 @@ function createRadar() {
         `
 	})
 
-	// Собираем SVG
 	svg.innerHTML = `
         <!-- Сетка (фон) -->
         <g class="radar-grid">

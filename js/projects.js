@@ -75,15 +75,12 @@ const projectsContainer = document.getElementById('projects')
 const projectsMoreContainer = document.getElementById('projects-more-container')
 const showAllBtn = document.getElementById('show-all-projects')
 
-// Конфигурация
 const MOBILE_BREAKPOINT = 768
 const PROJECTS_LIMIT_MOBILE = 3
 
-// Переменные состояния
 let isMobile = window.innerWidth < MOBILE_BREAKPOINT
 let allProjectsVisible = false
 
-// Функция создания карточки проекта
 function createProjectCard(p, index) {
 	const el = document.createElement('div')
 	el.className = 'project'
@@ -91,7 +88,6 @@ function createProjectCard(p, index) {
 	el.setAttribute('role', 'article')
 	el.setAttribute('aria-label', `Проект: ${p.title}`)
 
-	// Создаем ссылки
 	let linksHTML = ''
 
 	if (p.github) {
@@ -137,7 +133,6 @@ function createProjectCard(p, index) {
 		`
 	}
 
-	// Создаем теги технологий
 	const techTags = p.tech
 		.map(tech => `<span class="project__tag" aria-label="Технология: ${tech}">${tech}</span>`)
 		.join('')
@@ -177,24 +172,20 @@ function createProjectCard(p, index) {
 	return el
 }
 
-// Функция отрисовки проектов с учетом лимита
 function renderProjects() {
-	// Очищаем контейнер
+
 	projectsContainer.innerHTML = ''
 
-	// Определяем сколько проектов показывать
 	let projectsToShow = projects
 	if (isMobile && !allProjectsVisible) {
 		projectsToShow = projects.slice(0, PROJECTS_LIMIT_MOBILE)
 	}
 
-	// Создаем и добавляем карточки
 	projectsToShow.forEach((project, index) => {
 		const card = createProjectCard(project, index)
 		projectsContainer.appendChild(card)
 	})
 
-	// Управляем видимостью кнопки "Показать все"
 	if (isMobile && projects.length > PROJECTS_LIMIT_MOBILE) {
 		projectsMoreContainer.style.display = 'block'
 
@@ -219,18 +210,15 @@ function renderProjects() {
 		projectsMoreContainer.style.display = 'none'
 	}
 
-	// Инициализируем ленивую загрузку и анимации
 	initLazyLoading()
 	animateProjects()
 	initTouchOptimization()
 }
 
-// Функция переключения видимости всех проектов
 function toggleAllProjects() {
 	allProjectsVisible = !allProjectsVisible
 	renderProjects()
 
-	// Плавная прокрутка к кнопке при скрытии проектов
 	if (!allProjectsVisible) {
 		setTimeout(() => {
 			showAllBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
@@ -238,7 +226,6 @@ function toggleAllProjects() {
 	}
 }
 
-// Инициализация ленивой загрузки изображений
 function initLazyLoading() {
 	const lazyImages = document.querySelectorAll('.project__image[data-src]')
 
@@ -263,7 +250,6 @@ function initLazyLoading() {
 
 		lazyImages.forEach(img => imageObserver.observe(img))
 	} else {
-		// Fallback для старых браузеров
 		lazyImages.forEach(img => {
 			img.src = img.dataset.src
 			img.classList.add('loaded')
@@ -271,17 +257,14 @@ function initLazyLoading() {
 	}
 }
 
-// Анимация появления карточек
 function animateProjects() {
 	const projectElements = document.querySelectorAll('.project')
 
 	projectElements.forEach((project, index) => {
 		project.style.setProperty('--item-index', index)
 
-		// Добавляем атрибуты доступности
 		project.setAttribute('tabindex', '0')
 
-		// Обработка клавиатуры
 		project.addEventListener('keydown', e => {
 			if (e.key === 'Enter' || e.key === ' ') {
 				e.preventDefault()
@@ -295,7 +278,6 @@ function animateProjects() {
 	})
 }
 
-// Touch оптимизация
 function initTouchOptimization() {
 	if ('ontouchstart' in window) {
 		document.body.classList.add('touch-device')
@@ -303,10 +285,9 @@ function initTouchOptimization() {
 		const projectElements = document.querySelectorAll('.project')
 
 		projectElements.forEach(project => {
-			// Убираем hover-эффекты для touch
+
 			project.style.cursor = 'pointer'
 
-			// Touch обработчики
 			let touchStartTime
 
 			project.addEventListener(
@@ -321,7 +302,6 @@ function initTouchOptimization() {
 			project.addEventListener('touchend', () => {
 				project.classList.remove('touching')
 
-				// Если касание было коротким (тап), добавляем активное состояние
 				if (Date.now() - touchStartTime < 300) {
 					project.classList.add('active')
 					setTimeout(() => project.classList.remove('active'), 300)
@@ -331,46 +311,35 @@ function initTouchOptimization() {
 	}
 }
 
-// Обработчик изменения размера окна
 function handleResize() {
 	const newIsMobile = window.innerWidth < MOBILE_BREAKPOINT
 
-	// Если изменился режим (мобильный/десктоп), перерисовываем
 	if (newIsMobile !== isMobile) {
 		isMobile = newIsMobile
 
-		// На десктопе всегда показываем все проекты
 		if (!isMobile) {
 			allProjectsVisible = true
 		}
-
 		renderProjects()
 	}
 }
 
-// Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', () => {
-	// Определяем начальное состояние
+
 	isMobile = window.innerWidth < MOBILE_BREAKPOINT
 
-	// На десктопе сразу показываем все проекты
 	if (!isMobile) {
 		allProjectsVisible = true
 	}
-
-	// Первая отрисовка
 	renderProjects()
 
-	// Назначаем обработчик для кнопки
 	if (showAllBtn) {
 		showAllBtn.addEventListener('click', toggleAllProjects)
 	}
 
-	// Обработчик изменения размера окна
 	window.addEventListener('resize', handleResize)
 })
 
-// Обработчик изменения ориентации
 window.addEventListener('orientationchange', () => {
 	setTimeout(() => {
 		handleResize()

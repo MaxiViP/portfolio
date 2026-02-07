@@ -67,12 +67,10 @@ const prevBtn = document.querySelector('.carousel__btn--prev')
 const nextBtn = document.querySelector('.carousel__btn--next')
 const touchHint = document.getElementById('touch-hint')
 
-// Переменные для touch-скролла
 let isDragging = false
 let startX
 let scrollLeft
 
-// Функция создания карточек
 function createAwardCards() {
 	awardsContainer.innerHTML = ''
 
@@ -81,11 +79,8 @@ function createAwardCards() {
 		el.className = 'award-item'
 		el.setAttribute('role', 'listitem')
 		el.setAttribute('aria-label', a.title)
-
-		// Фоновое изображение по ТЗ
 		el.style.backgroundImage = `url(${a.backgroundUrl})`
 
-		// Контент
 		const content = document.createElement('div')
 		content.className = 'award-item-content'
 
@@ -101,7 +96,6 @@ function createAwardCards() {
 	})
 }
 
-// Функция для touch-скролла на мобильных
 function setupTouchScrolling() {
 	wrapper.addEventListener('mousedown', e => {
 		if (window.innerWidth <= 768 && wrapper.classList.contains('horizontal')) {
@@ -128,11 +122,10 @@ function setupTouchScrolling() {
 		if (!isDragging) return
 		e.preventDefault()
 		const x = e.pageX - wrapper.offsetLeft
-		const walk = (x - startX) * 1.5 // Множитель для скорости скролла
+		const walk = (x - startX) * 1.5
 		wrapper.scrollLeft = scrollLeft - walk
 	})
 
-	// Touch события для мобильных устройств
 	wrapper.addEventListener(
 		'touchstart',
 		e => {
@@ -166,53 +159,43 @@ function toggleViewMode() {
 	const isVertical = wrapper.classList.contains('vertical')
 
 	if (isVertical) {
-		// Переключаем на горизонтальный
 		wrapper.classList.remove('vertical')
 		wrapper.classList.add('horizontal')
 		toggleBtn.textContent = 'Вертикально'
 		toggleBtn.setAttribute('aria-label', 'Переключить на вертикальный вид')
 
-		// Показываем подсказку для горизонтального скролла
 		if (touchHint) touchHint.classList.remove('hidden')
 
-		// Включаем горизонтальный скролл
 		wrapper.style.overflowX = 'auto'
 		wrapper.style.overflowY = 'hidden'
 
-		// Показываем кнопки карусели только на десктопе
 		if (prevBtn && nextBtn && window.innerWidth >= 1024) {
 			prevBtn.style.display = 'flex'
 			nextBtn.style.display = 'flex'
 		}
 	} else {
-		// Переключаем на вертикальный
 		wrapper.classList.remove('horizontal')
 		wrapper.classList.add('vertical')
 		toggleBtn.textContent = 'Горизонтально'
 		toggleBtn.setAttribute('aria-label', 'Переключить на горизонтальный вид')
 
-		// Скрываем подсказку
 		if (touchHint) touchHint.classList.add('hidden')
 
-		// Включаем вертикальный скролл
 		wrapper.style.overflowX = 'hidden'
 		wrapper.style.overflowY = 'auto'
 
-		// Скрываем кнопки карусели
 		if (prevBtn && nextBtn) {
 			prevBtn.style.display = 'none'
 			nextBtn.style.display = 'none'
 		}
 
-		// Скроллим в начало
 		wrapper.scrollTop = 0
 	}
 }
 
-// Функция для горизонтальной прокрутки (только для десктопа)
 function setupCarousel() {
 	if (prevBtn && nextBtn && wrapper) {
-		// Прокрутка влево
+
 		prevBtn.addEventListener('click', () => {
 			wrapper.scrollBy({
 				left: -300,
@@ -220,7 +203,6 @@ function setupCarousel() {
 			})
 		})
 
-		// Прокрутка вправо
 		nextBtn.addEventListener('click', () => {
 			wrapper.scrollBy({
 				left: 300,
@@ -228,7 +210,6 @@ function setupCarousel() {
 			})
 		})
 
-		// Авто-скрытие кнопок при достижении края (только на десктопе)
 		if (window.innerWidth >= 1024) {
 			wrapper.addEventListener('scroll', () => {
 				const scrollLeft = wrapper.scrollLeft
@@ -252,27 +233,20 @@ function setupCarousel() {
 	}
 }
 
-// Инициализация
 document.addEventListener('DOMContentLoaded', () => {
-	// Создаем карточки
+
 	createAwardCards()
 
-	// Настройка подсказки
 	const touchHint = document.getElementById('touch-hint')
 
-	// Настраиваем кнопку переключения
 	if (toggleBtn) {
 		toggleBtn.addEventListener('click', toggleViewMode)
 		if ('ontouchstart' in window) toggleBtn.style.minHeight = '44px'
 	}
 
-	// Настраиваем touch-скролл
 	setupTouchScrolling()
-
-	// Настраиваем карусель
 	setupCarousel()
 
-	// Инициализация режима и подсказки
 	const isInitiallyVertical = wrapper.classList.contains('vertical')
 	if (isInitiallyVertical) {
 		toggleBtn.textContent = 'Горизонтально'
@@ -292,7 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (touchHint) touchHint.classList.remove('hidden')
 	}
 
-	// Обработчик ресайза
 	window.addEventListener('resize', () => {
 		if (wrapper.classList.contains('horizontal')) {
 			if (window.innerWidth >= 1024 && prevBtn && nextBtn) {

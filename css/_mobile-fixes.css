@@ -278,7 +278,6 @@ a,
 	}
 }
 
-/* Медиа-запросы для очень маленьких экранов */
 @media (max-width: 320px) {
 	/* Общие стили */
 	body {
@@ -493,26 +492,21 @@ a,
 	.project__description {
 		font-size: 13px;
 	}
-
-	/* Ачивки и награды */
 	.award-item {
 		min-width: 85vw;
 		max-width: 90vw;
 		padding: 12px;
 	}
 
-	/* Футер */
 	.footer__inner {
 		padding-inline: 10px;
 	}
 
-	/* Кнопки */
 	.btn {
 		padding: 10px 20px;
 		font-size: 13px;
 	}
-
-	/* Утилиты */
+  
 	.wrap-text,
 	.info-item__value {
 		word-break: break-word;

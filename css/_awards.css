@@ -12,10 +12,6 @@
 	transition: opacity 0.3s;
 }
 
-/* =====================
-   КНОПКИ КАРУСЕЛИ
-===================== */
-
 .carousel__btn {
 	position: absolute;
 	top: 50%;
@@ -54,10 +50,6 @@
 	right: -24px;
 }
 
-/* =====================
-   WRAPPER
-===================== */
-
 .awards-wrapper {
 	scroll-behavior: smooth;
 	padding-block: 12px 20px;
@@ -68,10 +60,6 @@
 	transition: all var(--transition-base);
 	overscroll-behavior-x: contain;
 }
-
-/* =====================
-   ГОРИЗОНТАЛЬНЫЙ ВИД
-===================== */
 
 .awards-wrapper.horizontal {
 	display: flex;
@@ -86,10 +74,6 @@
 	gap: 16px;
 	padding: 0 8px;
 }
-
-/* =====================
-   КАРТОЧКА НАГРАДЫ (ПО ТЗ)
-===================== */
 
 .award-item {
 	position: relative;
@@ -115,7 +99,6 @@
 		box-shadow var(--transition-base);
 }
 
-/* Затемнение фона */
 .award-item::before {
 	content: '';
 	position: absolute;
@@ -128,10 +111,6 @@
 	transform: scale(1.02);
 	box-shadow: var(--shadow-xl);
 }
-
-/* =====================
-   КОНТЕНТ
-===================== */
 
 .award-item-content {
 	position: relative;
@@ -153,15 +132,10 @@
 	transition: all 0.3s ease;
 }
 
-/* описание при наведении — строго по ТЗ */
 .award-item:hover span {
 	opacity: 1;
 	transform: translateY(0);
 }
-
-/* =====================
-   ВЕРТИКАЛЬНЫЙ ВИД
-===================== */
 
 .awards-wrapper.vertical {
 	display: flex;
@@ -186,10 +160,6 @@
 	display: none !important;
 }
 
-/* =====================
-   КНОПКА ПЕРЕКЛЮЧЕНИЯ
-===================== */
-
 .view-toggle-btn {
 	position: absolute;
 	top: 0;
@@ -208,20 +178,12 @@
 	background: var(--color-primary-dark);
 }
 
-/* =====================
-   ACCESSIBILITY
-===================== */
-
 .award-item:focus-visible,
 .view-toggle-btn:focus-visible,
 .carousel__btn:focus-visible {
 	outline: 2px solid var(--color-primary);
 	outline-offset: 2px;
 }
-
-/* =====================
-   MOBILE
-===================== */
 
 @media (max-width: 768px) {
 	.award-item {
