@@ -3,61 +3,61 @@ const awardsData = [
 		title: 'Open Source Contributions',
 		description:
 			'Активное участие в нескольких open-source проектах на GitHub: исправление багов, добавление функций, улучшение документации и тестов.',
-		image: 'img/awards/opensource.jpg',
+		backgroundUrl: 'img/awards/opensource.jpg',
 	},
 	{
 		title: 'Инновационные проекты',
 		description:
 			'Создание прототипов и экспериментов: Web Audio визуализатор, интерактивные SPA, VR/AR интерфейсы, нестандартные UI-решения.',
-		image: 'img/awards/innovation.jpg',
+		backgroundUrl: 'img/awards/innovation.jpg',
 	},
 	{
 		title: 'Технические мастерства',
 		description:
 			'Освоены современные инструменты и практики: TypeScript, Vue 3, Pinia, Nuxt, Webpack, тестирование, CI/CD, WebGL и оптимизация производительности.',
-		image: 'img/awards/skills.jpg',
+		backgroundUrl: 'img/awards/skills.jpg',
 	},
 	{
 		title: 'Адаптивная и кроссбраузерная верстка',
 		description:
 			'Созданы несколько сайтов с адаптивным дизайном, кроссбраузерной поддержкой и оптимизацией под мобильные устройства.',
-		image: 'img/awards/responsive.jpg',
+		backgroundUrl: 'img/awards/responsive.jpg',
 	},
 	{
 		title: 'Оптимизация производительности',
 		description:
 			'Успешно оптимизировал загрузку веб-приложений: lazy-loading, code-splitting, уменьшение размера bundle и ускорение рендеринга.',
-		image: 'img/awards/performance.jpg',
+		backgroundUrl: 'img/awards/performance.jpg',
 	},
 	{
 		title: 'UI/UX Дизайн и Анимации',
 		description:
 			'Разработка интуитивного интерфейса с микровзаимодействиями, плавными анимациями и современными UX-паттернами для веб-приложений.',
-		image: 'img/awards/uiux.jpg',
+		backgroundUrl: 'img/awards/uiux.jpg',
 	},
 	{
 		title: 'Реализация сложной логики',
 		description:
 			'Проекты с управлением состоянием, динамическими данными и сложными компонентами: плееры, CRM, чаты, интеграции с API.',
-		image: 'img/awards/logic.jpg',
+		backgroundUrl: 'img/awards/logic.jpg',
 	},
 	{
 		title: 'Тестирование и качество кода',
 		description:
 			'Покрытие приложений unit-тестами и e2e, настройка CI/CD для проверки кода, обеспечение стабильной работы проектов.',
-		image: 'img/awards/testing.jpg',
+		backgroundUrl: 'img/awards/testing.jpg',
 	},
 	{
 		title: 'Визуальные данные и графики',
 		description:
 			'Создание интерактивной визуализации данных с Chart.js, D3.js и другими библиотеками для аналитических панелей и дашбордов.',
-		image: 'img/awards/charts.jpg',
+		backgroundUrl: 'img/awards/charts.jpg',
 	},
 	{
 		title: 'Полноценные SPA-приложения',
 		description:
 			'Разработка сложных одностраничных приложений с маршрутизацией, авторизацией, интеграцией с API и продуманной архитектурой.',
-		image: 'img/awards/spa.jpg',
+		backgroundUrl: 'img/awards/spa.jpg',
 	},
 ]
 const awardsContainer = document.getElementById('awards')
@@ -82,27 +82,20 @@ function createAwardCards() {
 		el.setAttribute('role', 'listitem')
 		el.setAttribute('aria-label', a.title)
 
-		// Миниатюрное изображение
-		const img = document.createElement('img')
-		img.src = a.image
-		img.alt = a.title
-		img.loading = 'lazy'
-		el.appendChild(img)
+		// Фоновое изображение по ТЗ
+		el.style.backgroundImage = `url(${a.backgroundUrl})`
 
-		// Контейнер для текста
+		// Контент
 		const content = document.createElement('div')
 		content.className = 'award-item-content'
 
-		// Заголовок
 		const title = document.createElement('strong')
 		title.textContent = a.title
-		content.appendChild(title)
 
-		// Описание
 		const desc = document.createElement('span')
 		desc.textContent = a.description
-		content.appendChild(desc)
 
+		content.append(title, desc)
 		el.appendChild(content)
 		awardsContainer.appendChild(el)
 	})
